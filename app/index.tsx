@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ScrollView, Text, View, StyleSheet } from "react-native";
 import { Image } from "expo-image"
+import { Link } from "expo-router";
 
 interface Pokemon {
     name: string
@@ -77,35 +78,39 @@ export default function Index() {
     return (
 
         <ScrollView
-        contentContainerStyle={{
-            gap: 16,
-            padding: 8,
-        }}>
+            contentContainerStyle={{
+                gap: 16,
+                padding: 8,
+            }}>
             {
                 pokemons.map((pokemon) => (
-                    <View 
-                    key={pokemon.name}
-                    style={{
-                        backgroundColor: colorByType[pokemon.types[0].type.name] + 30,
-                        padding: 8, 
-                        borderRadius: 20   
-                    }}
+                    <Link
+                        key={pokemon.name}
+                        href={{pathname: "/details", params: {name: pokemon.name}}}
                     >
-                        <Text style={styles.name}>{pokemon.name}</Text>
-                        <Text style={styles.type}>{pokemon.types[0].type.name}</Text>
-                        <View style={{
-                            flexDirection: "row",
-                        }}>
-                            <Image source={{ uri: pokemon.image }} style={{
-                                width: 200,
-                                height: 200
-                            }} />
-                            <Image source={{ uri: pokemon.imageAlt }} style={{
-                                width: 200,
-                                height: 200
-                            }} />
+                        <View
+                            style={{
+                                backgroundColor: colorByType[pokemon.types[0].type.name] + 30,
+                                padding: 8,
+                                borderRadius: 20
+                            }}
+                        >
+                            <Text style={styles.name}>{pokemon.name}</Text>
+                            <Text style={styles.type}>{pokemon.types[0].type.name}</Text>
+                            <View style={{
+                                flexDirection: "row",
+                            }}>
+                                <Image source={{ uri: pokemon.image }} style={{
+                                    width: 200,
+                                    height: 200
+                                }} />
+                                <Image source={{ uri: pokemon.imageAlt }} style={{
+                                    width: 200,
+                                    height: 200
+                                }} />
+                            </View>
                         </View>
-                    </View>
+                    </Link>
                 ))
             }
         </ScrollView>
@@ -117,13 +122,13 @@ export default function Index() {
 const styles = StyleSheet.create({
     name: {
         fontSize: 28,
-        fontWeight: "bold" ,
+        fontWeight: "bold",
         textAlign: 'center'
     },
     type: {
         fontSize: 20,
         fontWeight: "bold",
         color: "grey",
-        textAlign:'center'
+        textAlign: 'center'
     }
 })
