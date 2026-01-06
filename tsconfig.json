@@ -5,7 +5,10 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@constants" : ["./constants/"],
+      "@services" : ["./services/"]
+
     }
   },
   "include": [

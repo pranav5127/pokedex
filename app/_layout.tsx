@@ -1,18 +1,31 @@
-import { Stack } from "expo-router";
+import { Stack } from "expo-router"
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{
-        title: "Home"
-      }} />
-
-      <Stack.Screen name="details" options={{
-        title: "Details",
-        presentation: "formSheet",
-        sheetAllowedDetents: [0.5, 0.7],
-        sheetGrabberVisible: true
-      }} />
+    <Stack
+      screenOptions={{
+        headerTintColor: "#fff",
+        headerTitleStyle: {
+          color: "#000",
+          fontWeight: "bold",
+        },
+      }}
+    >
+      <Stack.Screen 
+     
+        name="index"
+        options={{
+          headerTitle :"Pokedex",
+          headerShown: true,
+        }} 
+      />
+      <Stack.Screen 
+        name="details" 
+        options={{ 
+            headerTransparent: true,
+            headerTitle: "",
+        }} 
+      />
     </Stack>
-  )
+  );
 }
