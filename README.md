@@ -10,7 +10,6 @@ A minimal Pokedex app built with Expo and TypeScript. Browse Pokémon and view d
 ## Prerequisites
 - Node.js (LTS recommended)
 - Yarn or npm
-- Expo CLI (optional) — you can use `npx expo` if you don't want to install globally
 
 #### Run on a platform:
 
